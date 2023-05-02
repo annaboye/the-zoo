@@ -1,0 +1,13 @@
+@use "mixins";
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include mixins.tablet {
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,23 @@
+@use "mixins";
+
+.navbar {
+  // position: absolute;
+  background-color: rgba(231, 223, 223, 0.2);
+  width: 100%;
+  ul {
+    text-decoration: none;
+  }
+  a {
+    color: greenyellow;
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+
+    &:hover {
+      @include mixins.tablet {
+        padding: 20px 30px;
+        text-decoration: underline;
+      }
+    }
+  }
+}
