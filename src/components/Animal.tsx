@@ -44,7 +44,7 @@ export const Animal = ({id, imageUrl, isFed, lastFed, latinName, longDescription
     <p>Senast matad: {fedTime}</p>
     <p>latinskt namn: {latinName}</p>
     <p>Mediciner:{medicine}</p>
-    <button className={fed?"full":"needfood"} onClick={()=>fedTheAnimal(id)}>mata</button>
+    <button className={fed?"none":"needfood"} onClick={()=>fedTheAnimal(id)}>mata</button>
     </div>
    </>)}
   
