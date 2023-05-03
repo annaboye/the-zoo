@@ -11,7 +11,7 @@ export const AnimalView = () =>{
     const currentAnimal = animals.find((animal)=> animal.id.toString() === params.id)
     console.log(currentAnimal)
 
-    return<> <Navbar></Navbar>{currentAnimal && <Animal {...currentAnimal} fullDesc={true}></Animal> }</>
+    return<> <Navbar></Navbar>{currentAnimal && <Animal {...currentAnimal} fullDesc={true} animalList={animals}></Animal> }</>
   
 }
 

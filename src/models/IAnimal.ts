@@ -11,6 +11,7 @@ export interface IAnimal {
   yearOfBirth: number;
 }
 
-export interface IFullDescription extends IAnimal {
+export interface IAnimalProps extends IAnimal {
   fullDesc: boolean;
+  animalList: IAnimal[];
 }

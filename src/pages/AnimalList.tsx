@@ -13,7 +13,6 @@ export const AnimalList = () =>{
 
         if (animals.length<1){ getAnimals()}
         else{setAnimalsInZoo(animals)}
-        getAnimals()
           async function getAnimals(){
     
             const response =await axios.get<IAnimal[]>(
@@ -32,7 +31,7 @@ export const AnimalList = () =>{
     
     <div className="wrapper">{animalsInZoo.map((animal, index)=>(
    
-      <Animal {...animal} fullDesc={false}></Animal>
+      <Animal {...animal} fullDesc={false} animalList={animalsInZoo}></Animal>
       
     ))}
     </div>
