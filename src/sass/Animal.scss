@@ -1,11 +1,27 @@
 .forall {
-  width: 500px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  height: 400px;
+  background-color: lightgrey;
+  border: 2px solid white;
+  text-align: center;
   img {
-    height: 200px;
+    height: 100px;
     width: auto;
   }
 }
+
+.hungry {
+  color: red;
+}
+
+.full {
+  color: green;
+}
+
 .forone {
   display: flex;
   justify-content: center;
@@ -40,7 +56,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #917d7d;
   cursor: pointer;
   transition: border-color 0.25s;
 }
