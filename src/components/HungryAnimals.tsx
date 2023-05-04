@@ -12,7 +12,7 @@ export const HungryAnimals = ({animals}: IHungryAnimalsProps)=>{
     <h3>Hungriga djur:</h3>
     <span>Dessa djur är extra hungriga, gå till dem och ge dem mat:</span>
     <ul>
-    {animals.map((animal,index)=>(<li>{animal.name}</li>))}
+    {animals.map((animal,index)=>(<li key={index}>{animal.name}</li>))}
     </ul>
     </div>
     </>)
