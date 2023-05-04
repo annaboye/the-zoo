@@ -1,23 +1,22 @@
 @use "mixins";
 
 .navbar {
-  // position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(231, 223, 223, 0.2);
-  width: 100%;
+  width: 100 vw;
   ul {
     text-decoration: none;
+    list-style: none;
+    padding: 0;
   }
+
   a {
-    color: greenyellow;
+    color: rgb(89, 157, 89);
     display: block;
     padding: 5px;
     text-decoration: none;
-
-    &:hover {
-      @include mixins.tablet {
-        padding: 20px 30px;
-        text-decoration: underline;
-      }
-    }
   }
 }
