@@ -8,7 +8,7 @@ animals: IAnimal[]
 
 export const HungryAnimals = ({animals}: IHungryAnimalsProps)=>{
     return(<>
-    <div className="container">
+    <div className="hungrywrapper">
     <h3>Hungriga djur:</h3>
     <span>Dessa djur är extra hungriga, gå till dem och ge dem mat:</span>
     <ul>

@@ -2,15 +2,13 @@ import { SyntheticEvent, useState } from "react";
 import { IShowAnimalProps } from "../models/IShowAnimalProps";
 import "../sass/Animal.scss"
 import { Link } from "react-router-dom";
-import { IAnimal } from "../models/IAnimal";
-import { newTimeDisplay, timeSinceFed } from "../utils/functions";
+import { newTimeDisplay} from "../utils/functions";
 
 
 
 
 export const Animal = ({fullDesc, animalList, animal}: IShowAnimalProps) =>{
-  const [fedTime, setFedTime] = useState(animal.lastFed)
-  const[fedTimeDisplay, setFedTimeDisplay] =useState(newTimeDisplay(new Date(fedTime)))
+  const[fedTimeDisplay, setFedTimeDisplay] =useState(newTimeDisplay(new Date(animal.lastFed)))
   const [fed, setfed]= useState(animal.isFed)
    const addDefaultSrc =(e: SyntheticEvent)=>{
      let imgTag= e.target as HTMLImageElement;
@@ -19,11 +17,8 @@ export const Animal = ({fullDesc, animalList, animal}: IShowAnimalProps) =>{
    
    const fedTheAnimal=()=>{
     animal.lastFed = new Date().toString();
-    const lastMeal= timeSinceFed(animal);
     setFedTimeDisplay(newTimeDisplay(new Date(animal.lastFed)))
-    console.log(lastMeal)
     animal.isFed =true;
-    setFedTime(animal.lastFed)
     setfed(animal.isFed)    
     localStorage.setItem("animals",JSON.stringify(animalList))
     }
