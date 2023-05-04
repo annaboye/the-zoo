@@ -3,13 +3,14 @@ import { IShowAnimalProps } from "../models/IShowAnimalProps";
 import "../sass/Animal.scss"
 import { Link } from "react-router-dom";
 import { IAnimal } from "../models/IAnimal";
-import { timeSinceFed } from "../utils/functions";
+import { newTimeDisplay, timeSinceFed } from "../utils/functions";
 
 
 
 
 export const Animal = ({fullDesc, animalList, animal}: IShowAnimalProps) =>{
   const [fedTime, setFedTime] = useState(animal.lastFed)
+  const[fedTimeDisplay, setFedTimeDisplay] =useState(newTimeDisplay(new Date(fedTime)))
   const [fed, setfed]= useState(animal.isFed)
    const addDefaultSrc =(e: SyntheticEvent)=>{
      let imgTag= e.target as HTMLImageElement;
@@ -19,6 +20,7 @@ export const Animal = ({fullDesc, animalList, animal}: IShowAnimalProps) =>{
    const fedTheAnimal=()=>{
     animal.lastFed = new Date().toString();
     const lastMeal= timeSinceFed(animal);
+    setFedTimeDisplay(newTimeDisplay(new Date(animal.lastFed)))
     console.log(lastMeal)
     animal.isFed =true;
     setFedTime(animal.lastFed)
@@ -34,7 +36,7 @@ return(
   {!fed && <span className="hungry">Mata mig gärna!</span>}
   {fed && <span className="full">Jag är mätt!</span>}
   <img src={animal.imageUrl} onError={(event)=>addDefaultSrc(event)}alt={animal.latinName} />
-  <span>Senast matad: {fedTime}</span>
+  <span>Senast matad: {fedTimeDisplay}</span>
   {!fullDesc && <p>{animal.shortDescription}</p>}
   {!fullDesc && <Link to={JSON.stringify(animal.id)}><button>Gå till {animal.name} </button></Link>}
   {fullDesc && <p>{animal.longDescription}</p> }
