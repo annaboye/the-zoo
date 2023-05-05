@@ -1,31 +1,17 @@
 import { useEffect, useState } from "react";
 import { Navbar } from "../components/Navbar"
-import axios from "axios";
 import { IAnimal } from "../models/IAnimal";
 import { Animal } from "../components/Animal";
-import { Link } from "react-router-dom";
 import "../sass/AnimalList.scss"
 import { HungryAnimals } from "../components/HungryAnimals";
-import { timeSinceFed } from "../utils/functions";
+import { timeSinceFed } from "../services/timeServices";
+import { getAnimals } from "../services/getData";
 
 export const AnimalList = () =>{
     const [animalsInZoo, setAnimalsInZoo] = useState<IAnimal[]> ([])
     const [hungryAnimalList, setHungryAnimalList] = useState<IAnimal[]>([])
 
-    async function getAnimals(){
-      const response =await axios.get<IAnimal[]>(
-          `https://animals.azurewebsites.net/api/animals`
-        );
-        localStorage.setItem("animals",JSON.stringify(response.data))
-        setAnimalsInZoo(response.data)
-        setHungryAnimalList(whoIsHungry(response.data))
-        
-        return response.data
-      
-    }
-
-
-    function whoIsHungry (animals:IAnimal[]): IAnimal[] {
+    function animalLists (animals:IAnimal[]) {
       let hungryAnimals:IAnimal[]=[]
       animals.forEach((animal)=>{
       let hours= timeSinceFed(animal)
@@ -37,47 +23,25 @@ export const AnimalList = () =>{
       }
     });
       setAnimalsInZoo(animals)
+      setHungryAnimalList(hungryAnimals)
       localStorage.setItem("animals",JSON.stringify(animals))
-      return hungryAnimals
-      
     }
-
     useEffect(()=> {
-        let animals: IAnimal[]= (JSON.parse(localStorage.getItem("animals")|| "[]"));
-
-        let hungryAnimals: IAnimal[] = [];
-
-        if (animals.length<1){
-          
-          getAnimals()
-
+        let animalsFromLs: IAnimal[]= (JSON.parse(localStorage.getItem("animals")|| "[]"));
+        if (animalsFromLs.length<1){
+        getAnimals().then((response)=>animalLists(response));
         }
         else{
-          
-          hungryAnimals = whoIsHungry(animals)
-          setHungryAnimalList(hungryAnimals)
-          setAnimalsInZoo(animals)
+          animalLists(animalsFromLs)
         }
-        
-        
-        
-        
-
-
-        
-        
     }, [])
     return(
     <>
     <Navbar></Navbar>
-    
     <div className="wrapper">
       <HungryAnimals animals={hungryAnimalList}></HungryAnimals>
-      
       {animalsInZoo.map((animal, index)=>(
-   
-      <Animal animal={animal} fullDesc={false} animalList={animalsInZoo}></Animal>
-      
+      <Animal animal={animal} fullDesc={false} animalList={animalsInZoo} key={index}></Animal> 
     ))}
     </div>
     </>

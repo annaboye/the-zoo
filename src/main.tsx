@@ -16,6 +16,7 @@ const router = createBrowserRouter([
   {
     path: "/:id",
     element: <AnimalView></AnimalView>,
+    errorElement: <Error></Error>
   },
 ])
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

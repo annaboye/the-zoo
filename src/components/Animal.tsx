@@ -2,7 +2,7 @@ import { SyntheticEvent, useState } from "react";
 import { IShowAnimalProps } from "../models/IShowAnimalProps";
 import "../sass/Animal.scss"
 import { Link } from "react-router-dom";
-import { newTimeDisplay} from "../utils/functions";
+import { newTimeDisplay} from "../services/timeServices";
 
 
 
@@ -32,11 +32,13 @@ return(
   {fed && <span className="full">Jag är mätt!</span>}
   <img src={animal.imageUrl} onError={(event)=>addDefaultSrc(event)}alt={animal.latinName} />
   <span>Senast matad: {fedTimeDisplay}</span>
+  {fullDesc &&<button className={fed?"none":"needfood"} onClick={()=>fedTheAnimal()}>mata djur</button>}
   {!fullDesc && <p>{animal.shortDescription}</p>}
   {!fullDesc && <Link to={JSON.stringify(animal.id)}><button>Gå till {animal.name} </button></Link>}
   {fullDesc && <p>{animal.longDescription}</p> }
   {fullDesc && <p>{animal.latinName}</p> }
-  {fullDesc &&<button className={fed?"none":"needfood"} onClick={()=>fedTheAnimal()}>mata djur</button>}
+  
+  {fullDesc && <Link to="/">Gå tillbaka till alla djur</Link>}
   </div>
 
 )

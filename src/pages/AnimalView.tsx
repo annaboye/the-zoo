@@ -3,7 +3,7 @@ import { Navbar } from "../components/Navbar"
 import { IAnimal } from "../models/IAnimal";
 import { useParams } from "react-router";
 import { Animal } from "../components/Animal";
-import { timeSinceFed } from "../utils/functions";
+import { timeSinceFed } from "../services/timeServices";
 
 function isHungry (animal:IAnimal) {   
     let hours= timeSinceFed(animal)
@@ -16,22 +16,16 @@ export const AnimalView = () =>{
     const animals: IAnimal[]= (JSON.parse(localStorage.getItem("animals")|| "[]"));
     const params = useParams();
     const currentAnimal = animals.find((animal)=> animal.id.toString() === params.id)
-        
 
- 
     useEffect(()=> {
-       
         if(currentAnimal){
             isHungry(currentAnimal)
             localStorage.setItem("animals",JSON.stringify(animals))
-        }
-        
+        }   
     }, []);
-
-    
-   
-
-    return<> <Navbar></Navbar>{currentAnimal &&<Animal animal={currentAnimal}fullDesc={true} animalList={animals}></Animal>}</>
-  
+    return(<>
+    <Navbar></Navbar>
+    {currentAnimal &&<Animal animal={currentAnimal}fullDesc={true} animalList={animals}></Animal>}
+    </>)
 }
 

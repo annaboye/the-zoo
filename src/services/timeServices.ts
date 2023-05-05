@@ -8,7 +8,6 @@ export const timeSinceFed = (currentAnimal: IAnimal) => {
 };
 
 export const newTimeDisplay = (currentDate: Date) => {
-  console.log(currentDate);
   let date = currentDate.getDate().toString();
   let year = currentDate.getFullYear().toString();
   let month = (currentDate.getMonth() + 1).toString();
