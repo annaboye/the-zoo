@@ -1,10 +1,8 @@
 import { IAnimal } from "../models/IAnimal"
+import { IHungryAnimalsProps } from "../models/IHungryAnimalsProps"
 import "../sass/HungryAnimals.scss"
 
-interface IHungryAnimalsProps{
-animals: IAnimal[]
 
-}
 
 export const HungryAnimals = ({animals}: IHungryAnimalsProps)=>{
     return(<>

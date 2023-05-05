@@ -6,7 +6,7 @@ export const Navbar = () => {
       <Link to="/"><h1>Djurens ZOO</h1></Link>
       <ul>
         <li>
-          <Link to="/">Djuren</Link>
+          <Link to="/animals">Djuren</Link>
         </li>
       </ul>
     </nav>

@@ -23,8 +23,6 @@ export const Animal = ({fullDesc, animalList, animal}: IShowAnimalProps) =>{
     localStorage.setItem("animals",JSON.stringify(animalList))
     }
 
- 
- 
 return(
   <div className={fullDesc?"forone":"forall"}>
   <h4>{animal.name}</h4>
@@ -32,13 +30,20 @@ return(
   {fed && <span className="full">Jag är mätt!</span>}
   <img src={animal.imageUrl} onError={(event)=>addDefaultSrc(event)}alt={animal.latinName} />
   <span>Senast matad: {fedTimeDisplay}</span>
-  {fullDesc &&<button className={fed?"none":"needfood"} onClick={()=>fedTheAnimal()}>mata djur</button>}
-  {!fullDesc && <p>{animal.shortDescription}</p>}
-  {!fullDesc && <Link to={JSON.stringify(animal.id)}><button>Gå till {animal.name} </button></Link>}
-  {fullDesc && <p>{animal.longDescription}</p> }
-  {fullDesc && <p>{animal.latinName}</p> }
-  
-  {fullDesc && <Link to="/">Gå tillbaka till alla djur</Link>}
+  {!fullDesc &&<div>
+    <p>{animal.shortDescription}</p>
+    <Link to={JSON.stringify(animal.id)}>
+      <button>Gå till {animal.name}</button>
+    </Link>
+    </div>
+    }
+  {fullDesc && <div>
+    <button className={fed?"none":"needfood"} onClick={()=>fedTheAnimal()}>mata djur</button>
+    <p>Mediciner: {animal.medicine}</p>
+    <p>Födelse år: {animal.yearOfBirth}</p>
+    <p>Latinskt namn: {animal.latinName}</p>
+    <p>{animal.longDescription}</p>
+    <Link to="/animals">Gå tillbaka till alla djur</Link></div> }
   </div>
 
 )
