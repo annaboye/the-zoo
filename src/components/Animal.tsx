@@ -12,7 +12,8 @@ export const Animal = ({fullDesc, animalList, animal}: IShowAnimalProps) =>{
   const [fed, setfed]= useState(animal.isFed)
    const addDefaultSrc =(e: SyntheticEvent)=>{
      let imgTag= e.target as HTMLImageElement;
-     imgTag.src ="https://gotogulf.com/images/person-default.png"
+     const image = new URL('../assets/eyes.jpg', import.meta.url).href
+     imgTag.src =image
    }
    
    const fedTheAnimal=()=>{
