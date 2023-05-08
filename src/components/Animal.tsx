@@ -10,7 +10,7 @@ import { newTimeDisplay, timeSinceFed} from "../services/timeServices";
 export const Animal = ({fullDesc, animalList, animal}: IShowAnimalProps) =>{
   const [needfood, setNeedFood]= useState<boolean>()
   const[fedTimeDisplay, setFedTimeDisplay] =useState(newTimeDisplay(new Date(animal.lastFed)))
-  const [fed, setfed]= useState(animal.isFed)
+  const [fed, setfed]= useState<boolean>()
    const addDefaultSrc =(e: SyntheticEvent)=>{
      let imgTag= e.target as HTMLImageElement;
      const image = new URL('../assets/eyes.jpg', import.meta.url).href
@@ -19,13 +19,16 @@ export const Animal = ({fullDesc, animalList, animal}: IShowAnimalProps) =>{
   
    useEffect(()=> {
     const hoursSinceFeed = timeSinceFed(animal.lastFed)
-
-    if(hoursSinceFeed>=3){
+   console.log(hoursSinceFeed)
+    if(hoursSinceFeed>=3.0){
       animal.isFed =false
       setfed(animal.isFed)
       localStorage.setItem("animals",JSON.stringify(animalList))
     }
-    if (hoursSinceFeed>=4){
+    else{
+      setfed(animal.isFed)
+    }
+    if (hoursSinceFeed>=4.0){
       setNeedFood(true)
     }
 }, [])
