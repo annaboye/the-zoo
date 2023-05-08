@@ -3,7 +3,7 @@ import { Navbar } from "../components/Navbar"
 import { IAnimal } from "../models/IAnimal";
 import { useParams } from "react-router";
 import { Animal } from "../components/Animal";
-import { timeSinceFed } from "../services/timeServices";
+
 
 
 export const AnimalView = () =>{

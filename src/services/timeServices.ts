@@ -1,4 +1,4 @@
-import { IAnimal } from "../models/IAnimal";
+
 
 export const timeSinceFed = (lastFed: string) => {
   return Math.floor(
