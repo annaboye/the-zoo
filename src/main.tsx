@@ -6,6 +6,7 @@ import { AnimalList } from './pages/AnimalList';
 import { AnimalView } from './pages/AnimalView';
 import {Error} from './pages/Error'
 import { Startpage } from './pages/Startpage';
+import"./sass/resets.scss";
 const router = createBrowserRouter([
   {
     path: "/",

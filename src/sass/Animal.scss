@@ -6,7 +6,7 @@
   align-items: center;
   flex-direction: column;
   width: 350px;
-  min-height: 400px;
+  min-height: 450px;
   border: 2px solid white;
   text-align: center;
 
@@ -17,11 +17,11 @@
 }
 
 .hungry {
-  color: red;
+  color: #ef7c8e;
 }
 
 .full {
-  color: green;
+  color: #b6e2d3;
 }
 
 .none {
@@ -34,6 +34,8 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
+  padding: 50px;
+
   img {
     width: 300px;
     height: auto;
@@ -44,14 +46,14 @@
 }
 
 .needfood {
-  background-color: red;
+  background-color: #ef7c8e;
   &:hover {
-    background-color: lime;
+    background-color: #b6e2d3;
   }
 }
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #d8a7b1;
   text-decoration: inherit;
   cursor: pointer;
 }
@@ -66,10 +68,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #917d7d;
+  background-color: #d8a7b1;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  background-color: #b6e2d3;
 }
