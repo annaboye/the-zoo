@@ -18,7 +18,7 @@ export const Animal = ({fullDesc, animalList, animal}: IShowAnimalProps) =>{
    }
   
    useEffect(()=> {
-    const hoursSinceFeed = timeSinceFed(animal)
+    const hoursSinceFeed = timeSinceFed(animal.lastFed)
 
     if(hoursSinceFeed>=3){
       animal.isFed =false

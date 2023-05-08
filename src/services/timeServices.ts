@@ -1,9 +1,9 @@
 import { IAnimal } from "../models/IAnimal";
 
-export const timeSinceFed = (currentAnimal: IAnimal) => {
-  return Math.floor(
-    (new Date().getTime() - new Date(currentAnimal.lastFed).getTime()) /
-      (1000 * 60 * 60)
+export const timeSinceFed = (lastFed:string) => {
+  return (
+    (new Date().getTime() - new Date(lastFed).getTime()) /
+    (1000 * 60 * 60)
   );
 };
 

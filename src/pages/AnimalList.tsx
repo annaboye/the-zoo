@@ -14,7 +14,8 @@ export const AnimalList = () =>{
     function animalLists (animals:IAnimal[]) {
       let hungryAnimals:IAnimal[]=[]
       animals.forEach((animal)=>{
-      let hours= timeSinceFed(animal)
+      let hours= timeSinceFed(animal.lastFed)
+      console.log(hours)
       if (hours>=4){
       hungryAnimals.push(animal)
       }
