@@ -20,7 +20,7 @@ export const Animal = ({fullDesc, animalList, animal}: IShowAnimalProps) =>{
    useEffect(()=> {
     const hoursSinceFeed = timeSinceFed(animal.lastFed)
    console.log(hoursSinceFeed)
-    if(hoursSinceFeed>=3.0){
+    if(hoursSinceFeed>=3){
       animal.isFed =false
       setfed(animal.isFed)
       localStorage.setItem("animals",JSON.stringify(animalList))
@@ -28,7 +28,7 @@ export const Animal = ({fullDesc, animalList, animal}: IShowAnimalProps) =>{
     else{
       setfed(animal.isFed)
     }
-    if (hoursSinceFeed>=4.0){
+    if (hoursSinceFeed>=4){
       setNeedFood(true)
     }
 }, [])
